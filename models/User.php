@@ -5,7 +5,7 @@ class User{
     public function __construct() {}
 
     public function signUp($firstName,$lastName,$email,$password,$pdo){
-        $sql = "SELECT COUNT(id) FROM users WHERE email=?";
+        $sql = "SELECT id FROM users WHERE email=?";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(1,$email,PDO::PARAM_STR);
 
