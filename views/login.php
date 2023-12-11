@@ -13,3 +13,11 @@
     </form>
 </body>
 </html>
+
+<?php
+
+if(isset($_GET['message'])){
+    echo $_GET['message'];
+}
+
+?>
