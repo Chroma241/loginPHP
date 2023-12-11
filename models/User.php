@@ -4,7 +4,7 @@ class User{
 
     public function __construct() {}
 
-    public function signIn($firstName,$lastName,$email,$password,$pdo){
+    public function signUp($firstName,$lastName,$email,$password,$pdo){
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         $sql = "INSERT INTO users (firstname,lastname,email,password) VALUES (?,?,?,?)";
         $stmt = $pdo->prepare($sql);
@@ -55,7 +55,17 @@ class User{
         }
     }
     
-    
+    public function verifyRole($user_data){
+        //user_data fait reference a notre session['user_data']
+        // Ajouter vos condition en fonction de chaque role
+        if($user_data['role'] == 'Admin'){
+            echo "Welcome Admin";
+        }elseif($user_data['role'] == 'Editor'){
+            echo "Welcome Editor";
+        }elseif($user_data['role'] == 'Subscriber'){
+            echo "Welcome Subscriber";
+        }
+    }
 
 }
 
